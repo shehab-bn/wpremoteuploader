@@ -8,7 +8,6 @@ Author URI: http://tos.com.bd
 Version: 0.01
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 1.0
 */
 
 load_plugin_textdomain('rigr', false, 'remote-Upload');
@@ -87,7 +86,7 @@ function rigr_manager() {
 		foreach ($allurls[0] as $u) {
 			if ( !preg_match('/^https?:\/\//', $u) && ''!=$rigr_base_url )
 				$u= $rigr_base_url.ltrim($u, '/');
-			if ( preg_match('/(jpg|jpeg|gif|png|rar|zip|mp3|mp4|exe|flv|pdf|swf)/i', $u) )
+			if ( preg_match('/(jpg|jpeg|gif|png|rar|zip|mp3|mp4|flv|pdf|swf)/i', $u) )
 					$urls[]= $u;
 		}
 		$rigr_list= array_unique($urls);
@@ -142,7 +141,7 @@ function rigr_manager() {
 <h3 class="media-title"><?php _e('Past Remote file&#39;s Urls here: (one link per line)'); ?></h3>
 
 <textarea name="rigr_list" style="width:100%" rows="5" cols="64"></textarea>
-<p class="help">* Use Only ( jpg, jpeg, gif, png, rar, zip, mp3, mp4, exe, flv, swf & pdf) files direct links, </p>
+<p class="help">* Use Only ( jpg, jpeg, gif, png, rar, zip, mp3, mp4, flv, swf & pdf) files direct links, </p>
 <p class="help">example: http://website.com/path-to-file/my-file.zip</p>
 </div>
 
@@ -181,7 +180,7 @@ else
 
 <p><input type="checkbox" name="rigr_srcs" checked="checked" /><?php _e('Upload files from URLs in', 'rigr'); ?> <code>&lt;img&nbsp;src="...</code>?<br /></p>
 <p class="help">If uncheck both the uploader strips all html-tags and finds files URLs in the rest of text.</p>
-<p class="help"><a href="http://tos.com.bd/support" target="_blank" title="Online Help Document">Online Help Service</a>
+<p class="help"><a href="http://tos.com.bd/support" target="_blank" title="Online Help Servicet">Online Help Service</a>
 
 </p>
 </div>
@@ -197,7 +196,7 @@ else
 function rigr_fetch_remote_file($post, $url) {
 		$url2= str_replace('&amp;', '&', str_replace('https://', 'http://', $url));
  
-		preg_match('/[a-z0-9;=_%\Q?&.-+[]\E]+\.(jpg|jpeg|gif|png|rar|zip|mp3|mp4|exe|flv|pdf|swf)/i', $url2, $pu);
+		preg_match('/[a-z0-9;=_%\Q?&.-+[]\E]+\.(jpg|jpeg|gif|png|rar|zip|mp3|mp4|flv|pdf|swf)/i', $url2, $pu);
 		$file_name= str_replace('%25', '-', $pu[0]);
 		$file_name= preg_replace('/[;=%\Q?&-+\E]+/i', '-', $file_name);
 		$file_name= (strlen($file_name)>255)? substr($file_name, 180): $file_name;
